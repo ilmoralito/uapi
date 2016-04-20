@@ -1,0 +1,7 @@
+import uccleonapi.Classroom
+
+model {
+    Iterable<Classroom> classroomList
+}
+
+json tmpl.classroom(classroomList ?: [] )

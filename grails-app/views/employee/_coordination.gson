@@ -1,0 +1,11 @@
+import uccleonapi.Coordination
+
+model {
+    Coordination coordination
+}
+
+json {
+    name coordination.name
+    extensionNumber coordination.extensionNumber
+    location coordination.location
+}

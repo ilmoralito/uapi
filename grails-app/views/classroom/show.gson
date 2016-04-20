@@ -1,0 +1,7 @@
+import uccleonapi.Classroom
+
+model {
+    Classroom classroom
+}
+
+json tmpl.classroom(classroom)

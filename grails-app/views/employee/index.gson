@@ -1,0 +1,7 @@
+import uccleonapi.Employee
+
+model {
+    Iterable<Employee> employeeList
+}
+
+json tmpl.employee(employeeList ?: [])

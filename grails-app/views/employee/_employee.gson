@@ -1,0 +1,16 @@
+import uccleonapi.Classroom
+
+model {
+    Employee employee
+}
+
+json {
+    id employee.id
+    fullName employee.fullName
+    institutionalMail employee.institutionalMail
+    position employee.position
+    authority employee.authority
+    identityCard employee.identityCard
+    inss employee.inss
+    coordination tmpl.coordination(employee.coordination)
+}

@@ -1,0 +1,7 @@
+import uccleonapi.Coordination
+
+model {
+    Iterable<Coordination> coordinationList
+}
+
+json tmpl.coordination(coordinationList ?: [])

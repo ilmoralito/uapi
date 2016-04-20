@@ -1,0 +1,11 @@
+import uccleonapi.Classroom
+
+model {
+    Classroom classroom
+}
+
+json {
+    code classroom.code
+    name classroom.name
+    airConditioned classroom.airConditioned
+}
