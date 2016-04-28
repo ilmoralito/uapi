@@ -48,12 +48,14 @@ class BootStrap {
             name: "Ciencias economicas",
             extensionNumber: "111",
             location: "Academic",
+            color: "orange",
             id: "CCEE"
         )
         coordinations << builder.coordination(
             name: "Estudios por encuentro",
             extensionNumber: "115",
             location: "Academic",
+            color: "gold",
             id: "FESE"
         )
 

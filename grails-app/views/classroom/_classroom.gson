@@ -5,6 +5,7 @@ model {
 }
 
 json {
+    id classroom.id
     code classroom.code
     name classroom.name
     airConditioned classroom.airConditioned
