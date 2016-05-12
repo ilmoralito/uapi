@@ -1,4 +1,4 @@
-import uccleonapi.Classroom
+import uccleonapi.Employee
 
 model {
     Employee employee
@@ -12,5 +12,5 @@ json {
     authority employee.authority
     identityCard employee.identityCard
     inss employee.inss
-    coordination tmpl.coordination(employee.coordination)
+    coordination tmpl."/shared/coordination"(employee.coordination)
 }

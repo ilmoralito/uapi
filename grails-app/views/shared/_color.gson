@@ -1,0 +1,9 @@
+import uccleonapi.Color
+
+model {
+    Color color
+}
+
+json {
+    name color.name
+}

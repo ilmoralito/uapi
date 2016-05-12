@@ -4,4 +4,4 @@ model {
     Iterable<Coordination> coordinationList
 }
 
-json tmpl.coordination(coordinationList ?: [])
+json tmpl."/shared/coordination"(coordinationList ?: [])

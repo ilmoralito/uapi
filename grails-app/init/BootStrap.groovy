@@ -3,6 +3,8 @@ import grails.util.Environment
 import grails.util.DomainBuilder
 
 class BootStrap {
+    def grailsApplication
+
     def init = { servletContext ->
         if (Environment.DEVELOPMENT) {
             development()
@@ -14,11 +16,13 @@ class BootStrap {
     }
 
     private development() {
+        ConfigObject config = grailsApplication.config.uccleonapi
         DomainBuilder builder = new DomainBuilder()
-        builder.classNameResolver = "uccleonapi"
         List<Classroom> classrooms = []
         List<Coordination> coordinations = []
         List<Employee> employees = []
+
+        builder.classNameResolver = "uccleonapi"
 
         classrooms << builder.classroom(code: "B101", name: "Auditorio mayor", airConditioned: true)
         classrooms << builder.classroom(code: "B201", name: "Mesanini 1", airConditioned: true)
@@ -38,67 +42,87 @@ class BootStrap {
             extensionNumber: "230",
             location: "Administrative",
             id: "ADMINISTRACION"
-        )
+        ) {
+            color(name: "Verde institucional")
+        }
 
         coordinations << builder.coordination(
             name: "Direccion academica",
             extensionNumber: "231",
             location: "Academic",
             id: "DIRECCION ACADEMICA"
-        )
+        ) {
+            config.institutionalColors.each { institutionalColor ->
+                color(name: institutionalColor)
+            }
+        }
 
         coordinations << builder.coordination(
             name: "Protocolo",
             extensionNumber: "232",
             location: "Administrative",
             id: "PROTOCOLO"
-        )
+        ) {
+            config.institutionalColors.each { institutionalColor ->
+                color(name: institutionalColor)
+            }
+        }
 
         coordinations << builder.coordination(
             name: "Arquitectura",
             extensionNumber: "245",
             location: "Academic",
-            color: "Red",
             id: "ARQUITECTURA"
-        )
+        ) {
+            color(name: "Gris")
+        }
 
         coordinations << builder.coordination(
             name: "Agronomia",
             extensionNumber: "245",
             location: "Academic",
-            color: "Blue",
             id: "AGRONOMIA"
-        )
+        ) {
+            color(name: "Verde limon")
+        }
 
         coordinations << builder.coordination(
             name: "Soporte tecnico",
             extensionNumber: "129",
             location: "Administrative",
             id: "SOPORTETECNICO"
-        )
+        ) {
+            color(name: "Verde institucional")
+        }
 
         coordinations << builder.coordination(
             name: "Contabilidad",
             extensionNumber: "131",
             location: "Administrative",
             id: "CONTABILIDAD"
-        )
+        ) {
+            color(name: "Verde institucional")
+        }
 
         coordinations << builder.coordination(
             name: "Ciencias economicas",
             extensionNumber: "111",
             location: "Academic",
-            color: "orange",
             id: "CCEE"
-        )
+        ) {
+            color(name: "Verde institucional")
+        }
 
         coordinations << builder.coordination(
             name: "Estudios por encuentro",
             extensionNumber: "115",
             location: "Academic",
-            color: "gold",
             id: "FESE"
-        )
+        ) {
+            config.institutionalColors[1..-1].each { institutionalColor ->
+                color(name: institutionalColor)
+            }
+        }
 
         coordinations.each { coord ->
             coord.save failOnError: true

@@ -4,4 +4,4 @@ model {
     Coordination coordination
 }
 
-json tmpl.coordination(coordination)
+json tmpl."/shared/coordination"(coordination)

@@ -8,5 +8,5 @@ json {
     name coordination.name
     extensionNumber coordination.extensionNumber
     location coordination.location
-    color coordination.color
+    colors tmpl."/shared/color"(coordination.colors)
 }

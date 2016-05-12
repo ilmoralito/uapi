@@ -13,16 +13,18 @@ class Coordination {
     String name
     String extensionNumber
     String location
-    String color
 
     static constraints = {
         name blank: false, unique: true
         extensionNumber blank: false
         location inList: ["Administrative", "Academic"], maxSize: 150
-        color nullable: true, validator: { color, coordination ->
-            if (coordination.location == "Academic") {
-                color != ""
-            }
-        }
+        colors nullable: false, min: 0
     }
+
+    static mapping = {
+        colors cascade: "all-delete-orphan"
+    }
+
+    List<Color> colors
+    static hasMany = [colors: Color]
 }
