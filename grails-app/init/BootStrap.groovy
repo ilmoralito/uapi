@@ -24,13 +24,17 @@ class BootStrap {
 
         builder.classNameResolver = "uccleonapi"
 
-        classrooms << builder.classroom(code: "B101", name: "Auditorio mayor", airConditioned: true)
-        classrooms << builder.classroom(code: "B201", name: "Mesanini 1", airConditioned: true)
-        classrooms << builder.classroom(code: "B202", name: "Mesanini 2", airConditioned: true)
-        classrooms << builder.classroom(code: "C101", name: "Auditorio menor", airConditioned: true)
+        classrooms << builder.classroom(code: "B101", name: "Auditorio mayor", capacity: 400, airConditioned: true)
+        classrooms << builder.classroom(code: "B201", name: "Mesanini 1", capacity: 84, airConditioned: true)
+        classrooms << builder.classroom(code: "B202", name: "Mesanini 2", capacity: 70, airConditioned: true)
+        classrooms << builder.classroom(code: "C101", name: "Auditorio menor", capacity: 120, airConditioned: true)
         classrooms << builder.classroom(code: "C102", name: "Desarrollo y proyeccion", airConditioned: true)
-        classrooms << builder.classroom(code: "C103", airConditioned: false)
-        classrooms << builder.classroom(code: "C104", airConditioned: false)
+        classrooms << builder.classroom(code: "C109A", capacity: 40, airConditioned: true)
+        classrooms << builder.classroom(code: "E112", capacity: 100, airConditioned: true)
+        classrooms << builder.classroom(code: "C205", capacity: 53, airConditioned: true)
+        classrooms << builder.classroom(code: "D109",name: "Sala de proyeccion", capacity: 70, airConditioned: true)
+        classrooms << builder.classroom(code: "C103")
+        classrooms << builder.classroom(code: "C104")
 
         classrooms.each { c ->
             c.save failOnError: true

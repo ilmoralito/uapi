@@ -13,6 +13,7 @@ class Classroom {
         obj, source -> source["name"]?.capitalize()
     })
     String name
+    Integer capacity
     Boolean airConditioned = true
 
     static constraints = {
@@ -24,5 +25,6 @@ class Classroom {
             }
         }
         name nullable: true
+        capacity nullable: true
     }
 }

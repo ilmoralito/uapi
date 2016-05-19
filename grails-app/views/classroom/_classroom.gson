@@ -8,5 +8,6 @@ json {
     id classroom.id
     code classroom.code
     name classroom.name
+    capacity classroom.capacity
     airConditioned classroom.airConditioned
 }
