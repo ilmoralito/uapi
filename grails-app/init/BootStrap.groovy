@@ -148,7 +148,7 @@ class BootStrap {
             identityCard: "291-290178-0001W",
             inss: "123456778"
         ) {
-            coordination(refId: "ADMINISTRACION")
+            coordination(refId: "DIRECCION ACADEMICA")
         }
 
         employees << builder.employee(
