@@ -145,8 +145,8 @@ class BootStrap {
         }
 
         employees << builder.employee(
-            fullName: "Rosa Leon",
-            institutionalMail: "rosa.leon@ucc.edu.ni",
+            fullName: "Rosita Leon",
+            institutionalMail: "rosita.mollineda@ucc.edu.ni",
             position: "Director",
             authority: "Manager",
             identityCard: "291-290178-0001W",
