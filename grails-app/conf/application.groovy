@@ -1,3 +1,3 @@
 uccleonapi {
-    institutionalColors = ["Verde limon", "Naranja", "Gris", "Rojo vino", "Verde institucional"]
+    institutionalColors = ["Verde limon", "Naranja", "Gris", "Rojo vino", "Institucional"]
 }
