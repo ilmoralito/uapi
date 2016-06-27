@@ -17,6 +17,7 @@ class Employee {
     String identityCard
     String inss
     Coordination coordination
+
     Date dateCreated
     Date lastUpdated
 

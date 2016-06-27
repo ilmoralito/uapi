@@ -1,0 +1,7 @@
+import uccleonapi.Color
+
+model {
+    Iterable<Color> colorList
+}
+
+json tmpl.color(colorList ?: [] )

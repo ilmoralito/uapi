@@ -18,13 +18,16 @@ class Coordination {
         name blank: false, unique: true
         extensionNumber blank: false
         location inList: ["Administrative", "Academic"], maxSize: 150
-        colors nullable: false, min: 0
+        colors nullable: true, validator: { colors, obj ->
+            if (obj.location == "Academic") {
+                colors != null
+            }
+        }
     }
 
     static mapping = {
         colors cascade: "all-delete-orphan"
     }
 
-    List<Color> colors
     static hasMany = [colors: Color]
 }

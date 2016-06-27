@@ -1,8 +1,8 @@
 package uccleonapi
 
-import groovy.transform.ToString
+import grails.rest.*
 
-@ToString
+@Resource(uri= "/colors", readOnly= false, formats = ["json"])
 class Color {
     String name
 
@@ -10,5 +10,6 @@ class Color {
         name blank: false
     }
 
-    static belongsTo = [coordination: Coordination]
+    static belongsTo = Coordination
+    static hasMany = [coordination: Coordination]
 }
