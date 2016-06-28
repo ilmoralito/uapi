@@ -29,5 +29,5 @@ class Coordination {
         colors cascade: "all-delete-orphan"
     }
 
-    static hasMany = [colors: Color]
+    static hasMany = [colors: Color, employees: Employee]
 }

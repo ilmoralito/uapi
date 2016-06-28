@@ -9,5 +9,4 @@ json {
     extensionNumber coordination.extensionNumber
     location coordination.location
     colors tmpl."/shared/color"(coordination.colors)
-    employees tmpl.employee(coordination.employees)
 }

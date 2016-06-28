@@ -12,5 +12,4 @@ json {
     authority employee.authority
     identityCard employee.identityCard
     inss employee.inss
-    coordinations tmpl.coordination(employee.coordinations)
 }

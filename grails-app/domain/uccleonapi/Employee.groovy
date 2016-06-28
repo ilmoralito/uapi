@@ -16,7 +16,6 @@ class Employee {
     String authority
     String identityCard
     String inss
-    Coordination coordination
 
     Date dateCreated
     Date lastUpdated
@@ -29,4 +28,7 @@ class Employee {
         identityCard blank: false, unique: true
         inss blank: false, unique: true
     }
+
+    static belongsTo = Coordination
+    static hasMany = [coordinations: Coordination]
 }
