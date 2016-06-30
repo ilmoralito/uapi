@@ -7,6 +7,9 @@ import org.grails.databinding.BindUsing
 @ToString
 @Resource(uri= "/classrooms", readOnly= false, formats = ["json"])
 class Classroom {
+    @BindUsing({
+        obj, source -> source["code"]?.toUpperCase()
+    })
     String code
 
     @BindUsing({
@@ -18,13 +21,27 @@ class Classroom {
 
     static constraints = {
         code blank: false, unique: true, validator: { code ->
-            List<String> letterBuilding = ["B", "C", "D", "E", "K"]
+            List<String> buildingCode = ["B", "C", "D", "E", "K"]
+            String letter = code[0].toUpperCase()
+            String floor = code[1]
 
-            if (!(code[0] in letterBuilding) || !(code[1] in ["1", "2"])) {
-                return "no.valid.code"
+            if (!(letter in buildingCode)) {
+                return "not.valid.letter.code"
+            }
+
+            if (!(floor in ["1", "2"])) {
+                return "not.valid.floor.number"
+            }
+
+            if (!(code.size() in [4, 5])) {
+                return "not.valid.code.size"
             }
         }
         name nullable: true
-        capacity nullable: true
+        capacity nullable: true, validator: { capacity ->
+            if (capacity) {
+                capacity > 0
+            }
+        }
     }
 }
