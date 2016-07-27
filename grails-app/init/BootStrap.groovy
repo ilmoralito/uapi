@@ -160,7 +160,7 @@ class BootStrap {
         // ADMINISTRATIVE
         Coordination administracion = new Coordination(
             name: "Administracion",
-            extensionNumber: "230",
+            extensionNumber: "232",
             location: "Administrative"
         )
 
@@ -171,7 +171,7 @@ class BootStrap {
 
         Coordination protocolo = new Coordination(
             name: "Protocolo",
-            extensionNumber: "232",
+            extensionNumber: "117",
             location: "Administrative"
         )
 
@@ -181,7 +181,7 @@ class BootStrap {
 
         Coordination it = new Coordination(
             name: "Soporte tecnico",
-            extensionNumber: "245",
+            extensionNumber: "129",
             location: "Administrative"
         )
             .addToEmployees(sergioLopez)
@@ -190,7 +190,7 @@ class BootStrap {
 
         Coordination contabilidad = new Coordination(
             name: "Contabilidad",
-            extensionNumber: "222",
+            extensionNumber: "123",
             location: "Administrative"
         )
 
@@ -201,7 +201,7 @@ class BootStrap {
         // ACADEMIC
         Coordination direccionAcademica = new Coordination(
             name: "Direccion academica",
-            extensionNumber: "231",
+            extensionNumber: "127",
             location: "Academic"
         )
 
@@ -216,7 +216,7 @@ class BootStrap {
 
         Coordination arquitectura = new Coordination(
             name: "Arquitectura",
-            extensionNumber: "245",
+            extensionNumber: "118",
             location: "Academic"
         )
 
@@ -228,7 +228,7 @@ class BootStrap {
 
         Coordination agronomia = new Coordination(
             name: "Agronomia",
-            extensionNumber: "245",
+            extensionNumber: "118",
             location: "Academic"
         )
 
@@ -240,7 +240,7 @@ class BootStrap {
 
         Coordination fese = new Coordination(
             name: "Estudios por encuentro",
-            extensionNumber: "299",
+            extensionNumber: "115",
             location: "Academic"
         )
 
