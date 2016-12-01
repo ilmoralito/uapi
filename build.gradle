@@ -72,7 +72,8 @@ dependencies {
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
 
-    compile "org.grails.plugins:views-json:1.0.8"
+    compile 'org.grails.plugins:views-json:1.0.8'
+    runtime 'mysql:mysql-connector-java:5.1.40'
 }
 
 task wrapper(type: Wrapper) {
