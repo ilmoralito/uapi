@@ -5,28 +5,28 @@ import groovy.transform.ToString
 import org.grails.databinding.BindUsing
 
 @ToString
-@Resource(uri="/coordinations", readOnly= false, formats= ["json"])
+@Resource(uri='/coordinations', readOnly= false, formats= ['json'])
 class Coordination {
     @BindUsing({
-        obj, source -> source["name"]?.capitalize()
+        obj, source -> source['name']?.capitalize()
     })
     String name
     String extensionNumber
     String location
+    Integer printQuota
 
     static constraints = {
         name blank: false, unique: true
         extensionNumber blank: false
-        location inList: ["Administrative", "Academic"], maxSize: 150
-        colors nullable: true, validator: { colors, obj ->
-            if (obj.location == "Academic") {
-                colors != null
-            }
-        }
+        location inList: ['Administrative', 'Academic'], maxSize: 150
+        printQuota blank: false, min: 1
+        colors nullable: true
     }
 
     static mapping = {
-        colors cascade: "all-delete-orphan"
+        sort 'name'
+        version false
+        colors cascade: 'all-delete-orphan'
     }
 
     static hasMany = [colors: Color, employees: Employee]
