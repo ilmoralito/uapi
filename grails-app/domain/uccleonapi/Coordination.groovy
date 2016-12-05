@@ -1,11 +1,9 @@
 package uccleonapi
 
-import grails.rest.*
 import groovy.transform.ToString
 import org.grails.databinding.BindUsing
 
 @ToString
-@Resource(uri='/coordinations', readOnly= false, formats= ['json'])
 class Coordination {
     @BindUsing({
         obj, source -> source['name']?.capitalize()

@@ -10,6 +10,8 @@ class UrlMappings {
             }
         }
 
+        '/coordinations'(resources: 'coordination')
+
         "/$controller/$action?/$id?(.$format)?"{
             constraints {
                 // apply constraints here

@@ -2,7 +2,7 @@ package uccleonapi
 
 import grails.rest.*
 
-@Resource(uri= '/colors', readOnly= false, formats = ['json'])
+@Resource(uri= '/colors', readOnly=false, formats=['json'])
 class Color {
     String name
 
