@@ -12,6 +12,8 @@ class UrlMappings {
 
         '/coordinations'(resources: 'coordination')
 
+        '/employees'(resources: 'employee')
+
         "/$controller/$action?/$id?(.$format)?"{
             constraints {
                 // apply constraints here

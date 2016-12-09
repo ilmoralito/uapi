@@ -1,11 +1,9 @@
 package uccleonapi
 
-import grails.rest.*
 import groovy.transform.ToString
 import org.grails.databinding.BindUsing
 
 @ToString
-@Resource(uri='/employees', readOnly= false, formats= ['json'])
 class Employee {
      @BindUsing({ obj, source ->
         source['fullName']?.toLowerCase()?.tokenize(' ')*.capitalize().join(' ')
