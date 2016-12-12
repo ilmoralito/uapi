@@ -24,7 +24,6 @@ class Coordination {
     static mapping = {
         sort 'name'
         version false
-        colors cascade: 'all-delete-orphan'
     }
 
     static hasMany = [colors: Color, employees: Employee]

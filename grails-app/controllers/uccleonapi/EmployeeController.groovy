@@ -3,6 +3,7 @@ package uccleonapi
 import grails.rest.*
 import grails.converters.*
 import grails.transaction.*
+import grails.gorm.DetachedCriteria
 import static org.springframework.http.HttpStatus.*
 import static org.springframework.http.HttpMethod.*
 
@@ -26,7 +27,9 @@ class EmployeeController extends RestfulController {
                 inss: command.inss
             )
 
-            if (!employee.save()) {
+            employee.save(flush: true)
+
+            if (employee.hasErrors()) {
                 respond employee.errors
             } else {
                 command.coordinations.each { coordination ->
@@ -43,6 +46,52 @@ class EmployeeController extends RestfulController {
             }
         }
     }
+
+    @Transactional
+    def update(UpdateEmployeeCommand command) {
+        if (command.hasErrors()) {
+            respond command.errors
+        } else {
+            Employee employee = Employee.get(command.id)
+
+            if (employee) {
+                employee.fullName = command.fullName
+                employee.institutionalMail = command.institutionalMail
+                employee.authority = command.authority
+                employee.identityCard = command.identityCard
+                employee.inss = command.inss
+
+                employee.save(flush: true)
+
+                List temp = []
+                temp += employee.coordinations
+
+                temp.each { coordination ->
+                    coordination.removeFromEmployees(employee)
+                }
+
+                command.coordinations.each { coordinationName ->
+                    Coordination coordination = Coordination.findByName(coordinationName)
+
+                    coordination.addToEmployees(employee)
+                }
+
+                render status: OK
+            }
+        }
+    }
+
+    def getEmployeeByInstitutionalMail(final String institutionalMail) {
+        if (institutionalMail) {
+            DetachedCriteria query = Employee.where {
+                institutionalMail == institutionalMail
+            }
+
+            respond query.get()
+        } else {
+            respond([])
+        }
+    }
 }
 
 class EmployeeCommand {
@@ -57,4 +106,20 @@ class EmployeeCommand {
         importFrom Employee
         coordinations nullable: false, minSize: 1
     }
+}
+
+class UpdateEmployeeCommand {
+    Long id
+    String inss
+    String fullName
+    String authority
+    String identityCard
+    String institutionalMail
+    List<String> coordinations
+
+    static constraints = {
+        importFrom Employee
+        coordinations nullable: false, minSize: 1
+    }
+
 }
