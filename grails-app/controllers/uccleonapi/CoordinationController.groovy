@@ -13,7 +13,7 @@ class CoordinationController extends RestfulController {
     }
 
     @Transactional
-    def save(CoordinationCommandObject command) {
+    def save(CoordinationCommand command) {
         if (command.hasErrors()) {
             respond command.errors
         }
@@ -39,9 +39,40 @@ class CoordinationController extends RestfulController {
             render status: CREATED
         }
     }
+
+    def show(Coordination coordination) {
+        respond coordination
+    }
+
+    @Transactional
+    def update(Coordination coordination) {
+        if (!coordination) {
+            render status: NOT_FOUND
+        } else {
+            if (coordination.hasErrors()) {
+                respond coordination.errors
+            } else {
+                coordination.save flush: true
+
+                withFormat {
+                    '*' { render status: OK }
+                }
+            }
+        }
+    }
+
+    def searchByName(String name) {
+        if (name) {
+            Coordination coordination = Coordination.findByName(name)
+
+            respond coordination
+        } else {
+            respond [:]
+        }
+    }
 }
 
-class CoordinationCommandObject {
+class CoordinationCommand {
     String name
     String location
     String extensionNumber
@@ -52,3 +83,4 @@ class CoordinationCommandObject {
         importFrom Coordination
     }
 }
+

@@ -5,10 +5,12 @@ model {
 }
 
 json {
+    id coordination.id
     name coordination.name
     extensionNumber coordination.extensionNumber
     location coordination.location
     printQuota coordination.printQuota
+    manager tmpl.employee(coordination.employees.find { it.authority == 'Manager' })
+    assistants tmpl.employee(coordination.employees.findAll { it.authority != 'Manager' })
     colors tmpl."/shared/color"(coordination.colors)
-    employees tmpl.employee(coordination.employees)
 }

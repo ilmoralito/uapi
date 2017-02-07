@@ -10,7 +10,11 @@ class UrlMappings {
             }
         }
 
-        '/coordinations' (resources: 'coordination')
+        '/coordinations' (resources: 'coordination') {
+            collection {
+                '/searchByName' controller: 'coordination', action: 'searchByName'
+            }
+        }
 
         '/employees' (resources: 'employee') {
             collection {
