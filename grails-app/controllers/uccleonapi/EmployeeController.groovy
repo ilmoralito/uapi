@@ -89,7 +89,7 @@ class EmployeeController extends RestfulController {
 
             respond query.get()
         } else {
-            respond([])
+            respond([:])
         }
     }
 }
@@ -121,5 +121,4 @@ class UpdateEmployeeCommand {
         importFrom Employee
         coordinations nullable: false, minSize: 1
     }
-
 }
