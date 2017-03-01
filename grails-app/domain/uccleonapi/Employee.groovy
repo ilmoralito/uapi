@@ -1,9 +1,7 @@
 package uccleonapi
 
-import groovy.transform.ToString
 import org.grails.databinding.BindUsing
 
-@ToString(includeNames=true)
 class Employee {
      @BindUsing({ obj, source ->
         source['fullName']?.toLowerCase()?.tokenize(' ')*.capitalize().join(' ')

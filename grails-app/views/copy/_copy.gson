@@ -1,0 +1,31 @@
+import uccleonapi.Copy
+
+model {
+    Copy copy
+}
+
+json {
+    id copy.id
+    status copy.status
+    copies copy.copies
+    colorType copy.colorType
+    paperSize copy.paperSize
+    dateCreated copy.dateCreated
+    lastUpdated copy.lastUpdated
+    dateNotified copy.dateNotified
+    dateAttended copy.dateAttended
+    documentDescription copy.documentDescription
+    type copy in ExtraCopy ? 'extraCopy' : 'copy'
+
+    if (copy in ExtraCopy) {
+        ExtraCopy extraCopy = (ExtraCopy)copy
+
+        reasonForCancellation extraCopy.reasonForCancellation
+        dateAuthorized extraCopy.dateAuthorized
+        dateCanceled extraCopy.dateCanceled
+        authorizedBy extraCopy.authorizedBy
+        description extraCopy.description
+        canceledBy extraCopy.canceledBy
+    }
+}
+

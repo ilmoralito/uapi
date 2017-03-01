@@ -5,6 +5,7 @@ model {
 }
 
 json {
+    id coordination.id
     name coordination.name
     extensionNumber coordination.extensionNumber
     location coordination.location

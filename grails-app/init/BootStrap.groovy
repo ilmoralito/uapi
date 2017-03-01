@@ -64,6 +64,24 @@ class BootStrap {
 
         sport.save failOnError: true
 
+        Coordination coordinationOfAgronomy = new Coordination(
+            printQuota: 250,
+            name: 'Coordinacion de agronomia',
+            extensionNumber: '118',
+            location: 'Academic'
+        )
+
+        coordinationOfAgronomy.save failOnError: true
+
+        Coordination architecturalAndCivilCoordination = new Coordination(
+            printQuota: 300,
+            name: 'Coordinacion de arquitectura y civil',
+            extensionNumber: '118',
+            location: 'Academic'
+        )
+
+        architecturalAndCivilCoordination.save failOnError: true
+
         // EMPLOYEES
         Employee protocolManager = new Employee(
             inss: '1234567885',
@@ -125,6 +143,43 @@ class BootStrap {
 
         administrationAssistant.save failOnError: true
 
+        Employee assistantAgronomyAndArchitecture = new Employee(
+            fullName: 'Sadie Chavarria',
+            institutionalMail: 'sadie.chavarria@ucc.edu.ni',
+            authority: 'Assistant',
+            identityCard: '291-280228-0001W',
+            inss: '7414859600'
+        )
+
+        assistantAgronomyAndArchitecture
+            .addToCoordinations(coordinationOfAgronomy)
+            .addToCoordinations(architecturalAndCivilCoordination)
+            .save failOnError: true
+
+        Employee coordinatorOfAgronomy = new Employee(
+            fullName: 'Juan Mairena',
+            institutionalMail: 'juan.mairena@ucc.edu.ni',
+            authority: 'Manager',
+            identityCard: '291-280328-0001W',
+            inss: '7414859617'
+        )
+
+        coordinatorOfAgronomy
+            .addToCoordinations(coordinationOfAgronomy)
+            .save failOnError: true
+
+        Employee architecturalAndCivilCoordinator = new Employee(
+            fullName: 'Cesar Balladares',
+            institutionalMail: 'cesar.balladares@ucc.edu.ni',
+            authority: 'Manager',
+            identityCard: '291-300328-0001W',
+            inss: '7414858717'
+        )
+
+        architecturalAndCivilCoordinator
+            .addToCoordinations(architecturalAndCivilCoordination)
+            .save failOnError: true
+
         // Classrooms
         new Classroom(
             code: 'C101',
@@ -150,6 +205,78 @@ class BootStrap {
             capacity: 112,
             airConditioned: true
         ).save failOnError: true
+
+        // COPIES
+        Copy.withTransaction { status ->
+            new Copy(
+                documentDescription: 'Lorem ipsum dolor sit ament',
+                copies: 15,
+                coordination: protocol,
+                employee: protocolManager,
+                status: 'NOTIFIED'
+            ).save failOnError: true
+
+            new Copy(
+                documentDescription: 'Lorem ipsum dolor sit ament test mode',
+                copies: 30,
+                coordination: protocol,
+                employee: protocolManager
+            ).save failOnError: true
+
+            new Copy(
+                documentDescription: 'Lorem ipsum',
+                copies: 5,
+                coordination: technicalSupport,
+                employee: technicalSupportAssistant,
+                status: 'NOTIFIED'
+            ).save failOnError: true
+
+            new Copy(
+                documentDescription: 'Lorem ipsum dolor sit ament sega',
+                copies: 5,
+                coordination: technicalSupport,
+                employee: technicalSupportAssistant,
+                status: 'NOTIFIED'
+            ).save failOnError: true
+
+            new Copy(
+                documentDescription: 'Lorem ipsum dolor sit ament plus plus',
+                copies: 40,
+                coordination: technicalSupport,
+                employee: technicalSupportAssistant
+            ).save failOnError: true
+
+            new Copy(
+                documentDescription: 'Lorem ipsum dolor sit jeff ament',
+                copies: 50,
+                coordination: coordinationOfAgronomy,
+                employee: assistantAgronomyAndArchitecture
+            ).save failOnError: true
+
+            new Copy(
+                documentDescription: 'Lorem ipsum dolor sit jeff ament',
+                copies: 25,
+                coordination: coordinationOfAgronomy,
+                employee: assistantAgronomyAndArchitecture,
+                status: 'NOTIFIED'
+            ).save failOnError: true
+
+            new Copy(
+                documentDescription: 'Lorem ipsum dolor sit jeff jarret',
+                copies: 150,
+                coordination: architecturalAndCivilCoordination,
+                employee: assistantAgronomyAndArchitecture,
+                status: 'NOTIFIED'
+            ).save failOnError: true
+
+            new ExtraCopy(
+                documentDescription: 'Document extra copy demo text',
+                copies: 450,
+                coordination: coordinationOfAgronomy,
+                employee: assistantAgronomyAndArchitecture,
+                description: 'Description for extra copy instance'
+            ).save failOnError: true
+        }
     }
 
     private void production() {

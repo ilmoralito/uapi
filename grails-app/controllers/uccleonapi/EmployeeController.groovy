@@ -8,6 +8,8 @@ import static org.springframework.http.HttpStatus.*
 import static org.springframework.http.HttpMethod.*
 
 class EmployeeController extends RestfulController {
+    EmployeeService employeeService
+
     static responseFormats = ['json', 'xml']
 
     EmployeeController() {
@@ -90,6 +92,16 @@ class EmployeeController extends RestfulController {
             respond query.get()
         } else {
             respond([:])
+        }
+    }
+
+    def coordinationsPrintQuota(Integer employeeID) {
+        Employee employee = Employee.get(employeeID)
+
+        if (!employee) {
+            render status: 404
+        } else {
+            respond employeeService.printQuota(employee)
         }
     }
 }

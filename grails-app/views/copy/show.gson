@@ -1,0 +1,7 @@
+import uccleonapi.Copy
+
+model {
+    Copy copy
+}
+
+json tmpl.copy(copy)

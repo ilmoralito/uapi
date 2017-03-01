@@ -5,26 +5,31 @@ class UrlMappings {
     static mappings = {
         '/classrooms' (resources: 'classroom') {
             collection {
-                '/getByCodeLetter' controller: 'classroom', action: 'getByCodeLetter'
                 '/searchByName' controller:'classroom', action:'searchByName'
+                '/getByCodeLetter' controller: 'classroom', action: 'getByCodeLetter'
             }
         }
 
         '/coordinations' (resources: 'coordination') {
             collection {
                 '/searchByName' controller: 'coordination', action: 'searchByName'
+                '/employeesGroupedByCoordination' controller: 'coordination', action: 'employeesGroupedByCoordination'
             }
         }
 
         '/employees' (resources: 'employee') {
             collection {
+                '/coordinationsPrintQuota' controller: 'employee', action: 'coordinationsPrintQuota'
                 '/getEmployeeByInstitutionalMail' controller: 'employee', action: 'getEmployeeByInstitutionalMail'
             }
         }
 
-        "/$controller/$action?/$id?(.$format)?"{
-            constraints {
-                // apply constraints here
+        '/copies' (resources: 'copy') {
+            collection {
+                '/copyStatus' controller: 'copy', action: 'copyStatus'
+                '/saveExtraCopy' controller: 'copy', action: 'saveExtraCopy'
+                '/balanceByCoordination' controller: 'copy', action: 'balanceByCoordination'
+                '/copiesToDateByEmployee' controller: 'copy', action: 'copiesToDateByEmployee'
             }
         }
 

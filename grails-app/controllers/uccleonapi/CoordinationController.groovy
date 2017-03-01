@@ -7,7 +7,9 @@ import static org.springframework.http.HttpStatus.*
 import static org.springframework.http.HttpMethod.*
 
 class CoordinationController extends RestfulController {
-    static responseFormats = ['json', 'xml']
+    CoordinationService coordinationService
+
+    static responseFormats = ['json']
     CoordinationController() {
         super(Coordination)
     }
@@ -69,6 +71,10 @@ class CoordinationController extends RestfulController {
         } else {
             respond [:]
         }
+    }
+
+    def employeesGroupedByCoordination() {
+        respond coordinationService.employeesGroupedByCoordination()
     }
 }
 

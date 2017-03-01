@@ -1,9 +1,7 @@
 package uccleonapi
 
-import groovy.transform.ToString
 import org.grails.databinding.BindUsing
 
-@ToString
 class Coordination {
     @BindUsing({
         obj, source -> source['name']?.capitalize()

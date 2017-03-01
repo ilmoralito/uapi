@@ -1,3 +1,4 @@
-// Place your Spring DSL code here
 beans = {
+    // constraintsUtils(uccleonapi.ConstraintsUtils) {}
 }
+

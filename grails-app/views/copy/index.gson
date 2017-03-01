@@ -1,0 +1,8 @@
+import uccleonapi.Copy
+
+model {
+    Iterable<Copy> copyList
+}
+
+json tmpl.copy(copyList ?: [])
+
