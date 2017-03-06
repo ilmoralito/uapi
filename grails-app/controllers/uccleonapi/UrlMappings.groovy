@@ -33,6 +33,13 @@ class UrlMappings {
             }
         }
 
+        '/thirdparties' (resources: 'thirdParty') {
+            '/thirdpartyemployees' (resources: 'thirdPartyEmployee')
+            collection {
+                '/getAllByEnabled' controller: 'thirdParty', action: 'getAllByEnabled'
+            }
+        }
+
         '/' controller: 'application', action: 'index'
         '500' view: '/error'
         '404' view: '/notFound'

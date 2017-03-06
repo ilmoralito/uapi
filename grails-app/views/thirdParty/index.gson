@@ -1,0 +1,8 @@
+import uccleonapi.ThirdParty
+
+model {
+    Iterable<ThirdParty> thirdPartyList
+}
+
+json tmpl.thirdParty(thirdPartyList ?: [])
+

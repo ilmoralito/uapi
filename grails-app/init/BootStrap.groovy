@@ -207,76 +207,82 @@ class BootStrap {
         ).save failOnError: true
 
         // COPIES
-        Copy.withTransaction { status ->
-            new Copy(
-                documentDescription: 'Lorem ipsum dolor sit ament',
-                copies: 15,
-                coordination: protocol,
-                employee: protocolManager,
-                status: 'NOTIFIED'
-            ).save failOnError: true
+        // Copy.withTransaction { status ->
+        //     new Copy(
+        //         documentDescription: 'Lorem ipsum dolor sit ament',
+        //         copies: 15,
+        //         coordination: protocol,
+        //         employee: protocolManager,
+        //         status: 'NOTIFIED'
+        //     ).save failOnError: true
 
-            new Copy(
-                documentDescription: 'Lorem ipsum dolor sit ament test mode',
-                copies: 30,
-                coordination: protocol,
-                employee: protocolManager
-            ).save failOnError: true
+        //     new Copy(
+        //         documentDescription: 'Lorem ipsum dolor sit ament test mode',
+        //         copies: 30,
+        //         coordination: protocol,
+        //         employee: protocolManager
+        //     ).save failOnError: true
 
-            new Copy(
-                documentDescription: 'Lorem ipsum',
-                copies: 5,
-                coordination: technicalSupport,
-                employee: technicalSupportAssistant,
-                status: 'NOTIFIED'
-            ).save failOnError: true
+        //     new Copy(
+        //         documentDescription: 'Lorem ipsum',
+        //         copies: 5,
+        //         coordination: technicalSupport,
+        //         employee: technicalSupportAssistant,
+        //         status: 'NOTIFIED'
+        //     ).save failOnError: true
 
-            new Copy(
-                documentDescription: 'Lorem ipsum dolor sit ament sega',
-                copies: 5,
-                coordination: technicalSupport,
-                employee: technicalSupportAssistant,
-                status: 'NOTIFIED'
-            ).save failOnError: true
+        //     new Copy(
+        //         documentDescription: 'Lorem ipsum dolor sit ament sega',
+        //         copies: 5,
+        //         coordination: technicalSupport,
+        //         employee: technicalSupportAssistant,
+        //         status: 'NOTIFIED'
+        //     ).save failOnError: true
 
-            new Copy(
-                documentDescription: 'Lorem ipsum dolor sit ament plus plus',
-                copies: 40,
-                coordination: technicalSupport,
-                employee: technicalSupportAssistant
-            ).save failOnError: true
+        //     new Copy(
+        //         documentDescription: 'Lorem ipsum dolor sit ament plus plus',
+        //         copies: 40,
+        //         coordination: technicalSupport,
+        //         employee: technicalSupportAssistant
+        //     ).save failOnError: true
 
-            new Copy(
-                documentDescription: 'Lorem ipsum dolor sit jeff ament',
-                copies: 50,
-                coordination: coordinationOfAgronomy,
-                employee: assistantAgronomyAndArchitecture
-            ).save failOnError: true
+        //     new Copy(
+        //         documentDescription: 'Lorem ipsum dolor sit jeff ament',
+        //         copies: 50,
+        //         coordination: coordinationOfAgronomy,
+        //         employee: assistantAgronomyAndArchitecture
+        //     ).save failOnError: true
 
-            new Copy(
-                documentDescription: 'Lorem ipsum dolor sit jeff ament',
-                copies: 25,
-                coordination: coordinationOfAgronomy,
-                employee: assistantAgronomyAndArchitecture,
-                status: 'NOTIFIED'
-            ).save failOnError: true
+        //     new Copy(
+        //         documentDescription: 'Lorem ipsum dolor sit jeff ament',
+        //         copies: 25,
+        //         coordination: coordinationOfAgronomy,
+        //         employee: assistantAgronomyAndArchitecture,
+        //         status: 'NOTIFIED'
+        //     ).save failOnError: true
 
-            new Copy(
-                documentDescription: 'Lorem ipsum dolor sit jeff jarret',
-                copies: 150,
-                coordination: architecturalAndCivilCoordination,
-                employee: assistantAgronomyAndArchitecture,
-                status: 'NOTIFIED'
-            ).save failOnError: true
+        //     new Copy(
+        //         documentDescription: 'Lorem ipsum dolor sit jeff jarret',
+        //         copies: 150,
+        //         coordination: architecturalAndCivilCoordination,
+        //         employee: assistantAgronomyAndArchitecture,
+        //         status: 'NOTIFIED'
+        //     ).save failOnError: true
 
-            new ExtraCopy(
-                documentDescription: 'Document extra copy demo text',
-                copies: 450,
-                coordination: coordinationOfAgronomy,
-                employee: assistantAgronomyAndArchitecture,
-                description: 'Description for extra copy instance'
-            ).save failOnError: true
-        }
+        //     new ExtraCopy(
+        //         documentDescription: 'Document extra copy demo text',
+        //         copies: 450,
+        //         coordination: coordinationOfAgronomy,
+        //         employee: assistantAgronomyAndArchitecture,
+        //         description: 'Description for extra copy instance'
+        //     ).save failOnError: true
+        // }
+
+        // THIRD PARTY
+        new ThirdParty(name: 'Fotocopias Leoncito')
+            .addToThirdPartyEmployees(new ThirdPartyEmployee(fullName: 'Emma Hernandez', email: 'fotocopiasleoncito@hotmail.com'))
+            .addToThirdPartyEmployees(new ThirdPartyEmployee(fullName: 'Leon Hernandez', email: 'leon@hotmail.com'))
+            .save failOnError: true
     }
 
     private void production() {

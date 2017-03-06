@@ -1,0 +1,7 @@
+import uccleonapi.ThirdParty
+
+model {
+    ThirdParty thirdParty
+}
+
+json g.render(thirdParty, [deep: true])
