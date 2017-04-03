@@ -8,7 +8,7 @@ class BootStrap {
         }
 
         if (Environment.current == Environment.PRODUCTION) {
-            production()
+            // production()
         }
     }
 
@@ -35,7 +35,7 @@ class BootStrap {
             .addToColors(orange)
             .addToColors(institutional)
 
-        protocol.save failOnError: true
+        protocol.save flush: true
 
         Coordination technicalSupport = new Coordination(
             printQuota: 50,
@@ -93,7 +93,7 @@ class BootStrap {
 
         protocolManager.addToCoordinations(protocol)
 
-        protocolManager.save failOnError: true
+        protocolManager.save flush: true
 
         Employee technicalSupportAssistant = new Employee(
             inss: '1234567891',
@@ -207,76 +207,150 @@ class BootStrap {
         ).save failOnError: true
 
         // COPIES
-        // Copy.withTransaction { status ->
-        //     new Copy(
-        //         documentDescription: 'Lorem ipsum dolor sit ament',
-        //         copies: 15,
-        //         coordination: protocol,
-        //         employee: protocolManager,
-        //         status: 'NOTIFIED'
-        //     ).save failOnError: true
+        Date now = new Date()
 
-        //     new Copy(
-        //         documentDescription: 'Lorem ipsum dolor sit ament test mode',
-        //         copies: 30,
-        //         coordination: protocol,
-        //         employee: protocolManager
-        //     ).save failOnError: true
+        new Copy(
+            documentDescription: 'Lorem ipsum dolor sit ament',
+            copies: 15,
+            coordination: protocol,
+            employee: protocolManager,
+            dateNotified: now
+        ).save flush: true
 
-        //     new Copy(
-        //         documentDescription: 'Lorem ipsum',
-        //         copies: 5,
-        //         coordination: technicalSupport,
-        //         employee: technicalSupportAssistant,
-        //         status: 'NOTIFIED'
-        //     ).save failOnError: true
+        new Copy(
+            documentDescription: 'Lorem ipsum dolor sit ament',
+            copies: 20,
+            coordination: protocol,
+            employee: protocolManager,
+            status: Status.ATTENDED,
+            fateNotified: now
+        ).save failOnError: true
 
-        //     new Copy(
-        //         documentDescription: 'Lorem ipsum dolor sit ament sega',
-        //         copies: 5,
-        //         coordination: technicalSupport,
-        //         employee: technicalSupportAssistant,
-        //         status: 'NOTIFIED'
-        //     ).save failOnError: true
+        new Copy(
+            documentDescription: 'For this class, we will use the Cloud Foundry running on Pivotal Web Services. You must have an account to continue',
+            copies: 5,
+            coordination: protocol,
+            employee: protocolManager,
+            status: Status.ATTENDED,
+            dateNotified: now
+        ).save failOnError: true
 
-        //     new Copy(
-        //         documentDescription: 'Lorem ipsum dolor sit ament plus plus',
-        //         copies: 40,
-        //         coordination: technicalSupport,
-        //         employee: technicalSupportAssistant
-        //     ).save failOnError: true
+        new Copy(
+            documentDescription: 'Compare CF public services',
+            copies: 6,
+            coordination: coordinationOfAgronomy,
+            employee: assistantAgronomyAndArchitecture,
+            status: Status.ATTENDED,
+            dateNotified: now
+        ).save failOnError: true
 
-        //     new Copy(
-        //         documentDescription: 'Lorem ipsum dolor sit jeff ament',
-        //         copies: 50,
-        //         coordination: coordinationOfAgronomy,
-        //         employee: assistantAgronomyAndArchitecture
-        //     ).save failOnError: true
+        new Copy(
+            documentDescription: 'Compare CF public services vs Heroku',
+            copies: 10,
+            coordination: coordinationOfAgronomy,
+            employee: assistantAgronomyAndArchitecture,
+            status: Status.ATTENDED,
+            dateNotified: now
+        ).save failOnError: true
 
-        //     new Copy(
-        //         documentDescription: 'Lorem ipsum dolor sit jeff ament',
-        //         copies: 25,
-        //         coordination: coordinationOfAgronomy,
-        //         employee: assistantAgronomyAndArchitecture,
-        //         status: 'NOTIFIED'
-        //     ).save failOnError: true
+        new Copy(
+            documentDescription: 'Compare CF public services vs Heroku',
+            copies: 15,
+            coordination: architecturalAndCivilCoordination,
+            employee: assistantAgronomyAndArchitecture,
+            status: Status.ATTENDED,
+            dateNotified: now
+        ).save failOnError: true
 
-        //     new Copy(
-        //         documentDescription: 'Lorem ipsum dolor sit jeff jarret',
-        //         copies: 150,
-        //         coordination: architecturalAndCivilCoordination,
-        //         employee: assistantAgronomyAndArchitecture,
-        //         status: 'NOTIFIED'
-        //     ).save failOnError: true
+        new Copy(
+            documentDescription: 'Please review the requirement below and complete the following prerequisites before class',
+            copies: 8,
+            coordination: coordinationOfAgronomy,
+            employee: coordinatorOfAgronomy,
+            status: Status.NOTIFIED,
+            dateNotified: now
+        ).save failOnError: true
 
-        //     new ExtraCopy(
-        //         documentDescription: 'Document extra copy demo text',
-        //         copies: 450,
-        //         coordination: coordinationOfAgronomy,
-        //         employee: assistantAgronomyAndArchitecture,
-        //         description: 'Description for extra copy instance'
-        //     ).save failOnError: true
-        // }
+        new Copy(
+            documentDescription: 'This training is for people with',
+            copies: 15,
+            coordination: architecturalAndCivilCoordination,
+            employee: architecturalAndCivilCoordinator,
+            status: Status.NOTIFIED,
+            dateNotified: now
+        ).save failOnError: true
+
+        new Copy(
+            documentDescription: 'This training is for people with corage',
+            copies: 30,
+            coordination: architecturalAndCivilCoordination,
+            employee: architecturalAndCivilCoordinator,
+            status: Status.ATTENDED,
+            dateNotified: now
+        ).save failOnError: true
+
+        new Copy(
+            documentDescription: 'This training is for people with corage',
+            copies: 18,
+            coordination: architecturalAndCivilCoordination,
+            employee: architecturalAndCivilCoordinator,
+            status: Status.ATTENDED,
+            dateNotified: now
+        ).save failOnError: true
+
+        new ExtraCopy(
+            documentDescription: 'Document description',
+            copies: 120,
+            coordination: protocol,
+            employee: protocolManager,
+            status: Status.AUTHORIZED,
+            dateNotified: now,
+            description: 'For example, in the previous listing, if you were to define grails-app/views/index.gson and grails-app/views/index.gsp views, these would be used if the client requested application/json or text/html media types respectively. Thus allowing.',
+            authorizedBy: administrationManager,
+            dateAuthorized: now
+        ).save failOnError: true
+
+        new Copy(
+            documentDescription: 'Some copy document can goes here',
+            copies: 5,
+            coordination: architecturalAndCivilCoordination,
+            employee: architecturalAndCivilCoordinator,
+            status: Status.ATTENDED,
+            dateNotified: now,
+        ).save failOnError: true
+
+        new ExtraCopy(
+            documentDescription: 'Another document description',
+            copies: 200,
+            coordination: protocol,
+            employee: protocolManager,
+            status: Status.REQUEST_AUTHORIZATION,
+            dateNotified: now,
+            description: 'Some other description goes here'
+        ).save failOnError: true
+
+        new ExtraCopy(
+            documentDescription: 'Controlling the Priority of Media Types',
+            copies: 500,
+            coordination: protocol,
+            employee: protocolManager,
+            status: Status.REQUEST_AUTHORIZATION,
+            dateNotified: now,
+            description: 'For example, in the previous listing, if you were to define grails-app/views/index.gson and grails-app/views/index.gsp views, these would be used if the client requested application/json or text/html media types respectively. Thus allowing you to define a single backend capible of serving responses to a web browser or representing your application’s API'
+        ).save failOnError: true
+
+        new ExtraCopy(
+            documentDescription: 'Using Views to Output JSON Responses',
+            copies: 600,
+            coordination: protocol,
+            employee: protocolManager,
+            status: Status.CANCELED,
+            dateNotified: now,
+            dateCanceled: now,
+            canceledBy: administrationManager,
+            reasonForCancellation: 'Unlike the JsonBuilder class which creates a data structure in memory, which is handy in those situations where you want to alter the structure programatically before output, the StreamingJsonBuilder streams to a writer directly without any memory data structure. So if you don\'t need to modify the structure, and want a more memory-efficient approach, please use the StreamingJsonBuilder',
+            description: 'If you define a view (either a GSP or a JSON View) then Grails will render the view when using the respond method by calculating a model from the argument passed to respond'
+        ).save failOnError: true
 
         // THIRD PARTY
         new ThirdParty(name: 'Fotocopias Leoncito')

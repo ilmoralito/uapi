@@ -1,0 +1,12 @@
+import uccleonapi.Coordination
+
+model {
+    Coordination coordination
+}
+
+json {
+    id coordination.id
+    name coordination.name
+    location coordination.location
+    copyFee coordination.printQuota
+}

@@ -28,8 +28,21 @@ class UrlMappings {
             collection {
                 '/copyStatus' controller: 'copy', action: 'copyStatus'
                 '/saveExtraCopy' controller: 'copy', action: 'saveExtraCopy'
+                '/getAllByStatus' controller: 'copy', action: 'getAllByStatus'
                 '/balanceByCoordination' controller: 'copy', action: 'balanceByCoordination'
                 '/copiesToDateByEmployee' controller: 'copy', action: 'copiesToDateByEmployee'
+                '/getAllNotifiedOrAuthorized' controller: 'copy', action: 'getAllNotifiedOrAuthorized'
+                '/getAllRequestingAuthorization' controller: 'copy', action: 'getAllRequestingAuthorization'
+                '/filterNotifiedOrAuthorized' controller: 'copy', action: 'filterNotifiedOrAuthorized'
+                '/filter' controller: 'copy', action: 'filter'
+                '/yearList' controller: 'copy', action: 'yearList'
+                '/report' controller: 'copy', action: 'report'
+                '/getAllOutOfRange' controller: 'copy', action: 'getAllOutOfRange'
+                '/generalCopyStatus' controller: 'copy', action: 'generalCopyStatus'
+                '/getDocumentDescriptionByCoordination' controller: 'copy', action: 'getDocumentDescriptionByCoordination'
+                '/summaryByEmployee' controller: 'copy', action: 'summaryByEmployee'
+                '/summaryByCoordinationAndYear' controller: 'copy', action: 'summaryByCoordinationAndYear'
+                '/summaryByCoordinationAndYearAndMonth' controller: 'copy', action: 'summaryByCoordinationAndYearAndMonth'
             }
         }
 

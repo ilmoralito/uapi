@@ -1,0 +1,10 @@
+import uccleonapi.Employee
+
+model {
+    Employee employee
+}
+
+json {
+    id employee.id
+    fullName employee.fullName
+}

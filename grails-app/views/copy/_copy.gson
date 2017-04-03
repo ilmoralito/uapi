@@ -10,10 +10,12 @@ json {
     copies copy.copies
     colorType copy.colorType
     paperSize copy.paperSize
-    dateCreated copy.dateCreated
+    dateCreated copy.dateCreated.format('MM-dd HH:mm')
     lastUpdated copy.lastUpdated
     dateNotified copy.dateNotified
     dateAttended copy.dateAttended
+    employee tmpl.employee(copy.employee)
+    coordination tmpl.coordination(copy.coordination)
     documentDescription copy.documentDescription
     type copy in ExtraCopy ? 'extraCopy' : 'copy'
 
@@ -23,9 +25,8 @@ json {
         reasonForCancellation extraCopy.reasonForCancellation
         dateAuthorized extraCopy.dateAuthorized
         dateCanceled extraCopy.dateCanceled
-        authorizedBy extraCopy.authorizedBy
+        authorizedBy tmpl.employee(extraCopy.authorizedBy)
         description extraCopy.description
-        canceledBy extraCopy.canceledBy
+        canceledBy tmpl.employee(extraCopy.canceledBy)
     }
 }
-

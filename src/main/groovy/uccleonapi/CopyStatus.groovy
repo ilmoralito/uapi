@@ -1,6 +1,5 @@
 package uccleonapi
 
-enum Status {
-    PENDING, NOTIFIED, CANCELED, AUTHORIZED, ATTENDED
+public enum Status {
+    NOTIFIED, CANCELED, REQUEST_AUTHORIZATION, AUTHORIZED, ATTENDED
 }
-

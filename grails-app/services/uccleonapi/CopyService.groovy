@@ -1,8 +1,8 @@
 package uccleonapi
 
-import static java.util.Calendar.*
-import grails.transaction.Transactional
 import org.hibernate.criterion.CriteriaSpecification
+import grails.transaction.Transactional
+import grails.gorm.DetachedCriteria
 
 @Transactional
 class CopyService {
@@ -80,7 +80,76 @@ class CopyService {
     }
 
     Long balanceByCoordination(final Coordination coordination) {
-        coordination.printQuota - copiesToDateByCoordination(coordination)
+        coordination.printQuota - this.copiesToDateByCoordination(coordination)
+    }
+
+    List<Copy> getAllNotifiedOrAuthorized() {
+        query().list()
+    }
+
+    List<ExtraCopy> getAllRequestingAuthorization() {
+        Copy.where { status == Status.REQUEST_AUTHORIZATION }.list()
+    }
+
+    List<Copy> getAllByStatus(final List<String> statusList) {
+        Copy.where {
+            status in statusList.collect { it as Status }
+        }.list()
+    }
+
+    List<Copy> filterNotifiedOrAuthorized(final List<Coordination> coordinationList = [], final List<Employee> employeeList = []) {
+        Copy.createCriteria().list {
+            or {
+                eq 'status', Status.NOTIFIED
+                eq 'status', Status.AUTHORIZED
+            }
+
+            if (coordinationList) {
+                'in' 'coordination', coordinationList
+            }
+
+            if (employeeList) {
+                'in' 'employee', employeeList
+            }
+        }
+    }
+
+    List<Copy> filter(List<Coordination> coordinationList = [], List<Employee> employeeList = [], List<String> copyStatusList = []) {
+        Copy.createCriteria().list {
+            if (coordinationList) {
+                'in' 'coordination', coordinationList
+            }
+
+            if (employeeList) {
+                'in' 'employee', employeeList
+            }
+
+            // if (authorizedByList) {
+            //     'in' 'authorizedBy', authorizedByList
+            // }
+
+            // if (canceledByList) {
+            //     'in' 'canceledBy', canceledByList
+            // }
+
+            if (copyStatusList) {
+                'in' 'status', copyStatusList
+            }
+        }
+    }
+
+    List<Copy> report(final Integer year, final Integer month) {
+        Date date = new Date().clearTime()
+        Date from = date.clone()
+        Date to = date.clone()
+
+        from.set year: year, month: month, date: 1
+        to.set year: year, month: month, date: 31
+
+        Copy.where { dateCreated in from..to && status == Status.ATTENDED }.list()
+    }
+
+    private DetachedCriteria query() {
+        Copy.where { status == 'NOTIFIED' || status == 'AUTHORIZED' }
     }
 }
-

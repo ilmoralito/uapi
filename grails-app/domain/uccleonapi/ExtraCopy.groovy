@@ -19,7 +19,6 @@ class ExtraCopy extends Copy {
 
     static mapping = {
         reasonForCancellation type: 'text'
-        discriminator 'extraCopy'
         description type: 'text'
     }
 
@@ -27,6 +26,9 @@ class ExtraCopy extends Copy {
         Date now = new Date()
 
         switch(status) {
+            case Status.NOTIFIED:
+                dateNotified = now
+            break
             case Status.CANCELED:
                 dateCanceled = now
             break
